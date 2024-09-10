@@ -1,3 +1,4 @@
+pyttsx3
 plyer==2.0.0
 streamlit==1.27.2
 pyttsx3==2.90
