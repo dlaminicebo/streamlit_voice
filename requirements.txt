@@ -6,7 +6,6 @@ SpeechRecognition
 wikipedia-api
 pyjokes
 pywhatkit
-pyaudio
 Pillow
 sr
 kit
