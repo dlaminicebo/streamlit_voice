@@ -8,4 +8,7 @@ pyjokes
 pywhatkit
 pyaudio
 Pillow
+sr
+kit
+st
 
