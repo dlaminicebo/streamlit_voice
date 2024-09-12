@@ -1,13 +1,13 @@
-pyttsx3
+sr
+kit
+st
+stpyttsx3
 plyer
 streamlit
 pyttsx3
 SpeechRecognition
 wikipedia-api
 pyjokes
-pywhatkit==5.3
 Pillow
-sr
-kit
-st
+
 
