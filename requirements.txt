@@ -1,10 +1,7 @@
-sr
-st
-pyttsx3
-wikipedia
-plyer
-streamlit
-SpeechRecognition
-wikipedia-api
-pyjokes
-Pillow
+streamlit==1.25.0
+pyttsx3==2.90
+SpeechRecognition==3.8.1
+wikipedia-api==0.5.4
+pyjokes==0.6.0
+pywhatkit==5.4
+Pillow==10.0.0
