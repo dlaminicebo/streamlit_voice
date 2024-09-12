@@ -1,8 +1,8 @@
 twilio
 youtube-search-python
 APScheduler
+VideosSearch
 sr
-kit
 st
 pyttsx3
 wikipedia
