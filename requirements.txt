@@ -10,5 +10,6 @@ SpeechRecognition
 wikipedia-api
 pyjokes
 Pillow
+twilio
 
 
