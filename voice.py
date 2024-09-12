@@ -1,17 +1,11 @@
 import pyttsx3
 import datetime
-import speech_recognition as sr
 import wikipedia
 import os
 import webbrowser
 import pyjokes
 import pywhatkit as kit
 import streamlit as st
-from streamlit.runtime.scriptrunner import add_script_run_ctx
-
-
-
-
 
 # Initialize text-to-speech engine
 engine = pyttsx3.init('sapi5')
@@ -20,10 +14,6 @@ engine.setProperty('voice', voices[0].id)
 
 # Global flag to check if the engine is speaking
 is_speaking = False
-
-# Define the global stop_flag variable
-if 'stop_flag' not in st.session_state:
-    st.session_state.stop_flag = False
 
 # Define the speak function
 def speak(audio):
@@ -39,8 +29,7 @@ def speak(audio):
             is_speaking = False
 
 # Define the wish time function
-def wish_time():
-    x = st.session_state['name']  # Get the user's name from the session state
+def wish_time(name):
     hour = int(datetime.datetime.now().hour)
     if 0 <= hour < 6:
         speak('Good night! Sleep tight.')
@@ -50,27 +39,11 @@ def wish_time():
         speak('Good afternoon!')
     else:
         speak('Good evening!')
-    speak(f"{x}, how can I help you?")
-
-# Function to take command from the microphone
-def take_command():
-    recognizer = sr.Recognizer()
-    with sr.Microphone() as source:
-        speak("Say something")
-        recognizer.pause_threshold = 0.8
-        recognizer.adjust_for_ambient_noise(source, duration=0.5)
-        audio = recognizer.listen(source)
-    try:
-        query = recognizer.recognize_google(audio, language='en-in')
-        st.write(f"You said: {query}")
-    except Exception as e:
-        st.write("Could not recognize. Please try again.")
-        return "None"
-    return query
+    speak(f"{name}, how can I help you?")
 
 # Function to perform tasks based on the command
-def perform_task():
-    query = take_command().lower()
+def perform_task(query):
+    query = query.lower()
     if 'wikipedia' in query:
         speak('Searching Wikipedia...')
         query = query.replace("wikipedia", "")
@@ -109,30 +82,23 @@ def perform_task():
         webbrowser.open("https://www.google.nl/maps/place/" + location.replace(" ", "+"))
     elif 'exit' in query:
         speak("Exiting now.")
-        st.session_state.stop_flag = True
-
-# Function to start the voice assistant
-def start_voice_assistant():
-    wish_time()
-    while not st.session_state.stop_flag:
-        perform_task()
 
 # Main function to run the Streamlit app
 def main():
     st.title("Voice Assistant")
 
     # Input to get user's name
-    if 'name' not in st.session_state:
-        st.session_state['name'] = st.text_input("Enter Your Name")
+    name = st.text_input("Enter Your Name", "User")
 
-    # Button to start the voice assistant
-    if st.button("Start Voice Assistant"):
-        st.session_state.stop_flag = False
-        start_voice_assistant()
+    # Input for user to enter voice command
+    command = st.text_input("Enter your command manually")
 
-    # Button to stop the voice assistant
-    if st.button("Stop Voice Assistant"):
-        st.session_state.stop_flag = True
+    # Button to perform task
+    if st.button("Execute Command"):
+        if command:
+            perform_task(command)
+        else:
+            st.write("Please enter a command.")
 
 if __name__ == "__main__":
     main()
