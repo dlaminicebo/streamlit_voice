@@ -1,10 +1,9 @@
 sr
 kit
 st
-stpyttsx3
+pyttsx3
 plyer
 streamlit
-pyttsx3
 SpeechRecognition
 wikipedia-api
 pyjokes
