@@ -2,6 +2,7 @@ sr
 kit
 st
 pyttsx3
+wikipedia
 plyer
 streamlit
 SpeechRecognition
