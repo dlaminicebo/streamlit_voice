@@ -5,13 +5,10 @@ import wikipedia
 import os
 import webbrowser
 import pyjokes
-#import pywhatkit as kit
+import pywhatkit as kit
 import streamlit as st
 from streamlit.runtime.scriptrunner import add_script_run_ctx
-#new
-from twilio.rest import Client
-from youtubesearchpython import VideosSearch
-from apscheduler.schedulers.background import BackgroundScheduler
+
 
 
 
